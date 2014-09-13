@@ -36,9 +36,8 @@ possibleError <- tryCatch(
 )
 if(!inherits(possibleError, "error")){
   procedureT <- dbGetQuery(jdbcConnection, "select * from procedures")
-  providerT <- dbGetQuery(jdbcConnection, "select * from providers")
+  providerT <- dbGetQuery(jdbcConnection, "select * from provider")
   recordT <- dbGetQuery(jdbcConnection, "select * from records")
   dbDisconnect(jdbcConnection)
 }
-
 
