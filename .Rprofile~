@@ -1,0 +1,11 @@
+# To get this to work in your environment, change the following directory/folder path to the path to your project files.
+setwd("~/Mine/UT/GitRepositories/DataScienceFall2014/RProject")
+system("cat .Rprofile", intern = TRUE)
+## [1] "library(\"ggplot2\", lib.loc=\"/Library/Frameworks/R.framework/Versions/3.0/Resources/library\")"  
+## [2] "library(\"gplots\", lib.loc=\"/Library/Frameworks/R.framework/Versions/3.0/Resources/library\")"   
+## [3] "library(\"DBI\", lib.loc=\"/Library/Frameworks/R.framework/Versions/3.0/Resources/library\")"      
+## [4] "library(\"rJava\", lib.loc=\"/Library/Frameworks/R.framework/Versions/3.0/Resources/library\")"    
+## [5] "library(\"RJDBC\", lib.loc=\"/Library/Frameworks/R.framework/Versions/3.0/Resources/library\")"    
+## [6] "library(\"plyr\", lib.loc=\"/Library/Frameworks/R.framework/Versions/3.0/Resources/library\")"     
+## [7] "library(\"tabplot\", lib.loc=\"/Library/Frameworks/R.framework/Versions/3.0/Resources/library\")"  
+## [8] "library(\"lubridate\", lib.loc=\"/Library/Frameworks/R.framework/Versions/3.0/Resources/library\")"
