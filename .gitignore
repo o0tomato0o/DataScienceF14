@@ -1,6 +1,0 @@
-# Rproject for each of us
-*.Rproj
-.Rhistory
-.Rprofile
-
-# if you have anything to ignore, add it to this .gitignore list for ignoration(?)
