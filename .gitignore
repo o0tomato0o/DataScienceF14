@@ -1,0 +1,8 @@
+# Rproject for each of us
+*.Rproj
+.Rhistory
+.Rprofile
+.RData
+# Lib
+*.lib
+*.a
