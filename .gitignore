@@ -3,6 +3,5 @@
 .Rhistory
 .Rprofile
 .RData
-# Lib
-*.lib
-*.a
+
+# if you have anything to ignore, add it to this .gitignore list for ignoration(?)
