@@ -9,7 +9,7 @@ sudo mv ~/Downloads/ojdbc6.jar $JAVA_HOME
 # In the following, use your path instead of /Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home
 # For Windows, your Java Home folder should be similar to: C:/Program Files/Java/jdk1.8.0_20
 
-Sys.setenv(JAVA_HOME='C:/Program Files/Java/jdk1.8.0_20')
+Sys.setenv(JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home')
 options(java.parameters="-Xmx4g")
 library(rJava)
 
@@ -36,9 +36,31 @@ possibleError <- tryCatch(
 )
 if(!inherits(possibleError, "error")){
   procedureT <- dbGetQuery(jdbcConnection, "select * from procedures")
-  providerT <- dbGetQuery(jdbcConnection, "select * from providers")
+  providerT <- dbGetQuery(jdbcConnection, "select * from provider")
   recordT <- dbGetQuery(jdbcConnection, "select * from records")
+  ppsT <- dbGetQuery(jdbcConnection, "select provider_state as state, count(provider_id) as num
+from provider
+GROUP BY provider_state;")
   dbDisconnect(jdbcConnection)
 }
+
+
+
+#provider per state table
+possibleError <- tryCatch(
+  # In the following, use your username and password instead of "CS347_prof", "orcl_prof"
+  jdbcConnection <- dbConnect(jdbcDriver, "jdbc:oracle:thin:@128.83.138.158:1521:orcl", "C##cs347_fao286", "orcl_fao286"),
+  error=function(e) e
+)
+if(!inherits(possibleError, "error")){
+  ppsT <- dbGetQuery(jdbcConnection, "select provider_state as state, count(provider_id) as num
+from provider
+GROUP BY provider_state")
+  dbDisconnect(jdbcConnection)
+}
+
+
+
+
 
 
