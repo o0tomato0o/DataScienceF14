@@ -44,6 +44,7 @@ GROUP BY provider_state;")
   dbDisconnect(jdbcConnection)
 }
 
+<<<<<<< HEAD
 
 
 #provider per state table
@@ -64,3 +65,5 @@ GROUP BY provider_state")
 
 
 
+=======
+>>>>>>> 64e747817b503f54c5ef4f356155b5a5f45c7297
