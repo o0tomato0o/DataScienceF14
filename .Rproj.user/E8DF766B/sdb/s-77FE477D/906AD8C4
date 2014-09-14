@@ -1,0 +1,16 @@
+{
+    "contents" : "library(\"ggplot2\")\noptions(java.parameters=\"-Xmx2g\")\nlibrary(rJava)\nlibrary(RJDBC)\nlibrary(statebins)\n\njdbcDriver <- JDBC(driverClass=\"oracle.jdbc.OracleDriver\", classPath=\"/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/ojdbc6.jar\")\n\n# In the following, use your username and password instead of \"CS347_prof\", \"orcl_prof\" once you have an Oracle account\npossibleError <- tryCatch(\n  jdbcConnection <- dbConnect(jdbcDriver, \"jdbc:oracle:thin:@128.83.138.158:1521:orcl\", \"C##cs347_fao286\", \"orcl_fao286\"),\n  error=function(e) e\n)\nif(!inherits(possibleError, \"error\")){\n  records <- dbGetQuery(jdbcConnection, \"select * from records\")\n  provider <- dbGetQuery(jdbcConnection, \"select * from provider\")\n  procedures <- dbGetQuery(jdbcConnection, \"select * from procedures\")\n  dbDisconnect(jdbcConnection)\n}\n\" \nhead(diamonds)\n\nggplot(data = diamonds) + geom_histogram(aes(x = carat))\nggplot(data = diamonds) + geom_density(aes(x = carat, fill = \"gray50\"))\nggplot(diamonds, aes(x = carat, y = price)) + geom_point()\np <- ggplot(diamonds, aes(x = carat, y = price)) + geom_point(aes(color = color))\np + facet_wrap(~color) # For ~, see http://stat.ethz.ch/R-manual/R-patched/library/base/html/tilde.html and http://stat.ethz.ch/R-manual/R-patched/library/stats/html/formula.html\np + facet_grid(cut ~ clarity)\np <- ggplot(diamonds, aes(x = carat)) + geom_histogram(aes(color = color), binwidth = max(diamonds$carat)/30)\np + facet_wrap(~color) \np + facet_grid(cut ~ clarity)\n\n\"\nhead(provider)\ndata(provider)\nproviderT$PROVIDER_STATE <- rownames(providerT)\nstatebins(provider, value_col=\"Providers\", text_color=\"black\", font_size=3, legent_title=\"Providers\", legend_position=\"bottom\")\n\n",
+    "created" : 1410646399814.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4271828197",
+    "id" : "906AD8C4",
+    "lastKnownWriteTime" : 1410655140,
+    "path" : "~/Desktop/datascience/proj1/DataScienceF14/03 ggplot/Plots.R",
+    "project_path" : "03 ggplot/Plots.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

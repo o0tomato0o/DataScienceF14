@@ -1,0 +1,16 @@
+{
+    "contents" : "##library(\"ggplot2\")\n##\"Displaying the top few rows of a dataframe:\"\n##head(diamonds)\n##\"Selecting a subset of columns from a dataframe:\"\n##head(subset(diamonds, select = c(carat, cut)))\n##\"Selecting a subset of rows from a dataframe:\"\n##head(subset(diamonds, cut == \"Ideal\" & price > 5000))\n##\"Find average price group by color (plyr package is needed)\"\n##library(\"plyr\", lib.loc=\"/Library/Frameworks/R.framework/Versions/3.0/Resources/library\")\n##ddply(subset(diamonds, cut == \"Ideal\" & price > 5000),~color, summarise, o=mean(price, na.rm = TRUE))\n\n\n#Example of ggplot, but move this line to Pots folder later\nggplot(data = diamonds) + geom_histogram(aes(x = PROCEDURE_ID, PROCEDURE_NAME))\n\n\n<<<<<<< HEAD\nhead(procedureT)\nggplot(data = procedureT) + geom_histogram(aes(x = provider_ID))\nPROCEDURE_ID + PROCEDURE_NAME\n**\n=======\n>>>>>>> 64e747817b503f54c5ef4f356155b5a5f45c7297\n\nlibrary(\"ggplot2\")\n\"Displaying the top few rows of a dataframe:\"\nhead(procedureT)\n\"Selecting a subset of columns from a dataframe:\"\nhead(subset(procedureT, select = c(PROCEDURE_NAME)))\n\"Selecting a subset of rows from a dataframe:\"\n<<<<<<< HEAD\nhead(subset(diamonds, cut == \"Ideal\" & price > 5000))\n\"Find average price group by color (plyr package is needed)\"\nlibrary(\"plyr\", lib.loc=\"/Library/Frameworks/R.framework/Versions/3.0/Resources/library\")\nddply(subset(diamonds, cut == \"Ideal\" & price > 5000),~color, summarise, o=mean(price, na.rm = TRUE))\n\nhead(providerT)\nstatebins_continuous(ppsT, \"STATE\", \"NUM\", text_color=\"black\", font_size=3, legend_title=\"Providers\", legend_position=\"bottom\", )\n\n\nggplot(data = procedureT) + geom_histogram(aes(x = procedure_ID))\n=======\nhead(subset(procedureT, PROCEDURE_NAME == \"DYSEQUILIBRIUM\" & PROCEDURE_ID > 100))\n>>>>>>> 64e747817b503f54c5ef4f356155b5a5f45c7297\n",
+    "created" : 1410646019682.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1129679843",
+    "id" : "E088FBD7",
+    "lastKnownWriteTime" : 1410655309,
+    "path" : "~/Desktop/datascience/proj1/DataScienceF14/05DataFrame/dataframes.R",
+    "project_path" : "05DataFrame/dataframes.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
