@@ -54,15 +54,9 @@ statebins_continuous(ppsT, "STATE", "NUM", text_color="black", font_size=3, lege
 
 statebins_continuous(drug, "STATE", "NUM", text_color="black", font_size=3, legend_title="POISONING & TOXIC EFFECTS OF DRUGS W MCC", legend_position="bottom", brewer_pal = "Greens" )
 
-<<<<<<< HEAD
 
 #ggplot(data = procedureT) + geom_histogram(aes(x = procedure_ID))
 
 #head(subset(procedureT, PROCEDURE_NAME == "DYSEQUILIBRIUM" & PROCEDURE_ID > 100))
 
-=======
 
-#ggplot(data = procedureT) + geom_histogram(aes(x = procedure_ID))
-
-#head(subset(procedureT, PROCEDURE_NAME == "DYSEQUILIBRIUM" & PROCEDURE_ID > 100))
->>>>>>> 497e22b78c5ed2ad0e72fe5b1b706211bd01b9fb
