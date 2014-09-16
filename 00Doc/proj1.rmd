@@ -1,0 +1,18 @@
+---
+output: html_document
+---
+Data Science Fall 2014 R Project
+===
+**This project analyzes the Diamonds data from the ggplot2 package which has been supplemented with additional synthetic data and stored in an Oracle database.**
+
+###This is how my RStudio is configured:
+```{r}
+sessionInfo()
+```
+
+###Medicare Data Model
+
+![](./relational_model.png)  
+
+```{r}
+source("../05DataFrame/dataframes.R", echo = TRUE)
