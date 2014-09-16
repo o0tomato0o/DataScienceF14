@@ -35,6 +35,8 @@ library("plyr", lib.loc="/Library/Frameworks/R.framework/Versions/3.0/Resources/
 ddply(subset(diamonds, cut == "Ideal" & price > 5000),~color, summarise, o=mean(price, na.rm = TRUE))
 
 head(providerT)
+
+#state heatmap
 statebins_continuous(ppsT, "STATE", "NUM", text_color="black", font_size=3, legend_title="Providers", legend_position="bottom", )
 
 
