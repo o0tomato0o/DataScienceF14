@@ -13,20 +13,26 @@ possibleError <- tryCatch(
 if(!inherits(possibleError, "error")){
   procedureT <- dbGetQuery(jdbcConnection, "select * from PROCEDURES")
   providerT <- dbGetQuery(jdbcConnection, "select * from PROVIDER")
+  shinyAT <- dbGetQuery(jdbcConnection, "select * from SHINYT WHERE PROVIDER_STATE = 'TX' ")
   recordT <- dbGetQuery(jdbcConnection, "select * from RECORDS")
+  texasOnly <- dbGetQuery(jdbcConnection, "select PROVIDER_STATE, PROVIDER_NAME, PROVIDER_CITY, PROVIDER_ZIP_CODE,  AVERAGE_COVERED_CHARGES, AVERAGE_TOTAL_PAYMENTS, AVERAGE_MEDICARE_PAYMENTS from PROVIDER pr INNER JOIN RECORDS rec ON pr.PROVIDER_ID = rec.PROVIDER_ID AND PROVIDER_CITY = 'Austin' AND PROVIDER_STATE = 'TX'
+ORDER BY PROVIDER_NAME")
   dbDisconnect(jdbcConnection)
 }
 head(recordT)
+head(austinOnly)
+head(shinyAT)
 
-ggplot(data = recordT) + geom_histogram(aes(x = AVERAGE_COVERED_CHARGES))
-ggplot(data = recordT) + geom_density(aes(x = AVERAGE_MEDICARE_PAYMENTS, method = "glm",fill = "gray50"))
-ggplot(recordT, aes(x = AVERAGE_COVERED_CHARGES, y = TOTAL_DISCHARGES)) + geom_point()
+ggplot(data = shinyAT) + geom_histogram(aes(x = NUM))
+ggplot(data = shinyAT) + geom_density(aes(x = NUM,fill = "gray50"))
+ggplot(shinyAT, aes(y = NUM, x = PROCEDURE_NAME)) + geom_point()
 
-##Update these lines, they are references for now:
-p <- ggplot(diamonds, aes(x = carat, y = price)) + geom_point(aes(color = color))
-p + facet_wrap(~color) # For ~, see http://stat.ethz.ch/R-manual/R-patched/library/base/html/tilde.html and http://stat.ethz.ch/R-manual/R-patched/library/stats/html/formula.html
-p + facet_grid(cut ~ clarity)
-p <- ggplot(diamonds, aes(x = carat)) + geom_histogram(aes(color = color), binwidth = max(diamonds$carat)/30)
-p + facet_wrap(~color) 
-p + facet_grid(cut ~ clarity)
+
+p <- ggplot(shinyAT, aes(y = NUM, x = PROCEDURE_NAME)) + geom_point(aes(color = NUM))
+p + facet_wrap(~NUM) # For ~, see http://stat.ethz.ch/R-manual/R-patched/library/base/html/tilde.html and http://stat.ethz.ch/R-manual/R-patched/library/stats/html/formula.html
+p + facet_grid(~NUM)
+
+p <- ggplot(shinyAT, aes(x = NUM)) + geom_histogram(aes(color = NUM), binwidth = max(shinyT$NUM)/30)
+p + facet_wrap(~NUM) 
+p + facet_grid(~NUM)
 
