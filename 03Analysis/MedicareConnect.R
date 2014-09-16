@@ -20,7 +20,7 @@ print(.jcall("java/lang/System", "S", "getProperty", "java.version"))
 # Load RJDBC library
 library(RJDBC)
 
-jdbcDriver <- JDBC(driverClass="oracle.jdbc.OracleDriver", classPath="C:/Program Files/Java/jdk1.8.0_20/ojdbc6.jar")
+jdbcDriver <- JDBC(driverClass="oracle.jdbc.OracleDriver", classPath="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/ojdbc6.jar")
 
 # The following data.frame will be used as the default if emps can't be loaded from Oracle.
 proc1 <- 1
@@ -38,13 +38,9 @@ if(!inherits(possibleError, "error")){
   procedureT <- dbGetQuery(jdbcConnection, "select * from procedures")
   providerT <- dbGetQuery(jdbcConnection, "select * from provider")
   recordT <- dbGetQuery(jdbcConnection, "select * from records")
-  ppsT <- dbGetQuery(jdbcConnection, "select provider_state as state, count(provider_id) as num
-from provider
-GROUP BY provider_state;")
   dbDisconnect(jdbcConnection)
 }
 
-<<<<<<< HEAD
 
 
 #provider per state table
@@ -65,5 +61,3 @@ GROUP BY provider_state")
 
 
 
-=======
->>>>>>> 64e747817b503f54c5ef4f356155b5a5f45c7297
