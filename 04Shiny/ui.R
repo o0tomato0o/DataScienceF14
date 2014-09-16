@@ -1,24 +1,26 @@
 #ui.R 
 
 library(shiny)
+#library(ggplot2)
 
-# Define UI for application that plots random distributions 
 shinyUI(pageWithSidebar(
 
-  # Application title
-  headerPanel("Hello Shiny!"),
-
-  # Sidebar with a slider input for number of observations
+  headerPanel("Medicare"),
   sidebarPanel(
-    sliderInput("obs", 
-                "Number of observations:", 
-                min = 2009,
-                max = 2013, 
-                value = 2009)
+      selectInput("Procedures",label = "Select the State",
+                  choices = c("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
+                              "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
+                              "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
+                              "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
+                              "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY")
+                 )
   ),
-
-  # Show a plot of the generated distribution
+  # Show a summary of the dataset and an HTML table with the 
+  # requested number of observations
   mainPanel(
-    plotOutput("distPlot")
+    tabsetPanel(
+      tabPanel("Medicare Plot", plotOutput("summary"))
+    ),
+    verbatimTextOutput("summary")
   )
 ))
